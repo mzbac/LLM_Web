@@ -1,4 +1,4 @@
-# This project demonstrates how to securely host a Hugging Face language model using text-generation-inference and Nginx with a self-signed SSL certificate.
+This project demonstrates how to securely host a Hugging Face language model using text-generation-inference and Nginx with a self-signed SSL certificate.
 
 ## Prerequisites
 - Docker
