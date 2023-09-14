@@ -5,11 +5,34 @@ services:
     ports:
       - "80:80"
       - "443:443"
+    depends_on:
+      - chatui
+    networks:
+      - gateway_network
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    volumes:
+      - ./mongo:/data/db
+    ports:
+      - "27017:27017"
+    networks:
+      - gateway_network
+  chatui:
+    build: 
+      context: ./chat-ui
+      dockerfile: Dockerfile
+    container_name: chatui
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongodb
+      - text-generation-inference
     networks:
       - gateway_network
   text-generation-inference:
     image: ghcr.io/huggingface/text-generation-inference:latest
-    command: ["--max-total-tokens", "4096", "--max-input-length", "4000", "--max-batch-prefill-tokens", "4096", "--quantize", "gptq", "--model-id", "TheBloke/WizardCoder-Python-34B-V1.0-GPTQ"]
+    command: ["--max-total-tokens", "3080", "--max-input-length", "3072", "--max-batch-prefill-tokens", "3080", "--quantize", "gptq", "--model-id", "mzbac/CodeLlama-34b-guanaco-gptq"]
     volumes:
       - $PWD/models:/data
     container_name: text-generation-inference

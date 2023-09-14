@@ -34,3 +34,9 @@ logs/
 
 # Ignore all files in the models folder
 models/*
+
+# ignore mongo db folder
+mongo
+
+# ignore chat-ui repo
+chat-ui
