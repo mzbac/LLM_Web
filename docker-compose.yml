@@ -32,7 +32,7 @@ services:
       - gateway_network
   text-generation-inference:
     image: ghcr.io/huggingface/text-generation-inference:latest
-    command: ["--max-total-tokens", "3080", "--max-input-length", "3072", "--max-batch-prefill-tokens", "3080", "--quantize", "gptq", "--model-id", "mzbac/CodeLlama-34b-guanaco-gptq"]
+    command: ["--max-total-tokens", "3080", "--max-input-length", "3072", "--max-batch-prefill-tokens", "3080", "--quantize", "awq", "--model-id", "mzbac/CodeLlama-34b-guanaco-awq"]
     volumes:
       - $PWD/models:/data
     container_name: text-generation-inference
