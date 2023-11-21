@@ -63,15 +63,15 @@ Add the `.env.local` file in the chat-ui
 MONGODB_URL=mongodb://mongodb:27017/
 MODELS=`[
     {
-        "name": "mzbac/CodeLlama-34b-guanaco-gptq",
-        "datasetName": "CodeLlama-34b-guanaco-gptq",
+        "name": "TheBloke/deepseek-coder-33B-instruct-AWQ",
+        "datasetName": "deepseek-ai/deepseek-coder-33b-instruct",
         "description": "A good alternative to ChatGPT",
-        "websiteUrl": "https://open-assistant.io",
-        "userMessageToken": "### Human: ",
-        "assistantMessageToken": "### Assistant: ",
+        "websiteUrl": "https://huggingface.co/deepseek-ai/deepseek-coder-33b-instruct",
+        "userMessageToken": "### Instruction: \n",
+        "assistantMessageToken": "### Response: \n",
         "userMessageEndToken": "\n",
         "assistantMessageEndToken": "\n",
-        "preprompt": "Below are a series of dialogues between various people and an AI assistant. The AI tries to be helpful, polite, honest, sophisticated, emotionally aware, and humble-but-knowledgeable. The assistant is happy to help with almost anything, and will do its best to understand exactly what is needed. It also tries to avoid giving false or misleading information, and it caveats when it isn't entirely sure about the right answer. That said, the assistant is practical and really does its best, and doesn't let caution get too much in the way of being useful.\n",
+        "preprompt": "You are an AI programming assistant, utilizing the Deepseek Coder model, developed by Deepseek Company, and you only answer questions related to computer science. For politically sensitive questions, security and privacy issues, and other non-computer science questions, you will refuse to answer.\n",
         "promptExamples": [
             {
                 "title": "Write an email from bullet list",
@@ -87,11 +87,11 @@ MODELS=`[
         "parameters": {
             "temperature": 0.7,
             "top_p": 0.95,
-            "repetition_penalty": 1.2,
+            "repetition_penalty": 1.1,
             "top_k": 50,
-            "truncate": 1024,
-            "max_new_tokens": 2048,
-            "stop": ["### Human"]
+            "truncate": 1512,
+            "max_new_tokens": 1024,
+            "stop": ["### Instruction:"]
         },
         "endpoints": [{"url": "http://text-generation-inference:80"}]
     }
